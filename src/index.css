@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand: #0E9A9A;
+  --color-brand-dark: #0A6B6B;
+  --color-brand-light: #E6F6F6;
+  --color-lime: #FFD24D;
+  --color-lime-soft: #FFF8D6;
+  --color-coral: #2EC4B6;
+  --color-coral-soft: #E6FFF9;
+  --color-warm: #F8FEFE;
+  --color-ink: #0F2323;
+  --color-ink-secondary: #6A8080;
+  --color-card: #FFFFFF;
+  --color-deep: #0A2E2E;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background-color: #F8FEFE;
+  color: #0F2323;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #E6F6F6;
+  color: #0F2323;
+}
+
+/* Soft scrollbar - teal */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C7E8E8; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #A0D9D9; }
+
+/* Section reveal */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: revealUp 0.7s ease-out both;
+}
+
+/* Shimmer for showy elements */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(100deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 60%);
+  background-size: 200% 100%;
+  animation: shimmer 2.8s ease-in-out infinite;
+}
+
+/* Blob shapes - teal & gold showy */
+.blob-1 {
+  position: absolute;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle at 40% 40%, #E6F6F6 0%, #F0FFFE 55%, transparent 75%);
+  border-radius: 50% 40% 60% 30% / 50% 60% 40% 50%;
+  z-index: 0; pointer-events: none;
+  opacity: 0.9;
+}
+.blob-2 {
+  position: absolute;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle at 60% 40%, #FFF8D6 0%, #FFFEF0 60%, transparent 75%);
+  border-radius: 60% 30% 50% 40% / 40% 50% 60% 50%;
+  z-index: 0; pointer-events: none;
+}
+.blob-3 {
+  position: absolute;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle at 50% 50%, #E6FFF9 0%, #F0FFFE 60%, transparent 75%);
+  border-radius: 50%;
+  z-index: 0; pointer-events: none;
+}

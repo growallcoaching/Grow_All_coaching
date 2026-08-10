@@ -66,13 +66,19 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
             <a
-              href="#contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark text-white text-sm font-bold px-6 py-3 shadow-lg shadow-brand/20 hover:shadow-brand/40 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden group/btn"
+              href="./Login/Login.tsx"
+              className="relative inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#E8F9EE] text-[#128C7E] text-sm font-bold px-5 py-2.5 shadow-sm hover:bg-[#DFF7E7] transition-all duration-300"
+            >
+              Login
+            </a>
+            <a
+              href="./Signup/Signup.tsx"
+              className="relative inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white text-sm font-bold px-5 py-2.5 shadow-lg shadow-[#25D366]/30 hover:bg-[#1EBE5A] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden group/btn"
             >
               <span className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition bg-gradient-to-r from-white/10 to-transparent" />
-              Get Started
+              Signup
             </a>
           </div>
 
@@ -102,13 +108,22 @@ export default function Header() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="mt-4 rounded-full bg-brand text-white text-center font-bold py-4 shadow-lg shadow-brand/20"
-          >
-            Get Started
-          </a>
+          <div className="mt-4 grid gap-3">
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-full border border-[#25D366]/30 bg-[#E8F9EE] text-[#128C7E] text-center font-bold py-4 shadow-sm"
+            >
+              Login
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-full bg-[#25D366] text-white text-center font-bold py-4 shadow-lg shadow-[#25D366]/30"
+            >
+              Signup
+            </a>
+          </div>
         </div>
       </div>
     </header>

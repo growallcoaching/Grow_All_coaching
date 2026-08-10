@@ -161,19 +161,19 @@ export default function Internships() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="internship-modal-title"
-            className="w-full max-w-[1120px] max-h-[calc(100vh-2rem)] overflow-hidden rounded-[28px] border border-[#DFF1F1] bg-[#F8FEFE] p-5 sm:p-7 lg:p-8 shadow-[0_30px_90px_rgba(15,35,35,0.28)]"
+            className="w-full max-w-[1100px] max-h-[calc(100vh-2rem)] overflow-hidden rounded-[30px] border border-[#DFF1F1] bg-[#F8FEFE] p-5 sm:p-7 lg:p-8 shadow-[0_30px_90px_rgba(15,35,35,0.28)]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="max-h-[calc(100vh-4rem)] overflow-y-auto pr-1">
             <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <p className="font-display text-[0.96rem] font-bold uppercase tracking-[0.26em] text-brand">
+              <div className="flex-1 min-w-0">
+                <p className="font-display text-[0.82rem] font-bold uppercase tracking-[0.24em] text-brand">
                   Internship Program
                 </p>
-                <h3 id="internship-modal-title" className="mt-4 font-display text-[clamp(2.4rem,4vw,4.2rem)] font-extrabold leading-[0.96] tracking-[-0.07em] text-ink">
+                <h3 id="internship-modal-title" className="mt-4 font-display text-[clamp(2rem,3vw,3.4rem)] font-extrabold leading-[0.96] tracking-[-0.06em] text-ink">
                   {selectedProgram.title}
                 </h3>
-                <p className="mt-2 text-[1.5rem] italic font-medium text-ink/80">
+                <p className="mt-2 text-[1.2rem] italic font-medium text-ink/80">
                   Build. Learn. Ship. Get Placed.
                 </p>
               </div>
@@ -193,13 +193,13 @@ export default function Internships() {
                 <span className="inline-flex w-fit items-center rounded-full bg-[#DDF4F4] px-4 py-2 text-[0.72rem] font-extrabold uppercase tracking-[0.28em] text-brand">
                   {selectedProgram.badge}
                 </span>
-                <span className="text-[2.7rem] font-extrabold leading-none tracking-[-0.08em] text-ink">{selectedProgram.price}</span>
+                <span className="text-[2.3rem] font-extrabold leading-none tracking-[-0.08em] text-ink sm:text-[2.7rem]">{selectedProgram.price}</span>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[1rem] text-ink/80">
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.96rem] text-ink/80">
                 {featureRows.map((item) => (
                   <span key={item.label} className="inline-flex items-center gap-2">
-                    <span className="text-[1.1rem] leading-none">{item.icon}</span>
+                    <span className="text-[1rem] leading-none">{item.icon}</span>
                     {item.label}
                   </span>
                 ))}
@@ -208,21 +208,22 @@ export default function Internships() {
             </div>
 
             <div className="mt-8 text-ink/80">
-              <p className="text-[1.8rem] leading-[1.35] font-medium">
-                 {selectedProgram.desc} </p>
+              <p className="text-[1.08rem] leading-[1.8] font-medium sm:text-[1.18rem]">
+                {selectedProgram.desc}
+              </p>
             </div>
 
             <div className="mt-8 space-y-4 text-ink">
-              <div className="flex items-center gap-4 text-[1.18rem] sm:text-[1.35rem]">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
+              <div className="flex items-start gap-4 text-[1.02rem] sm:text-[1.15rem]">
+                <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
                 <span><span className="font-extrabold">Duration:</span> {selectedProgram.duration} of hands-on learning and development</span>
               </div>
-              <div className="flex items-center gap-4 text-[1.18rem] sm:text-[1.35rem]">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
+              <div className="flex items-start gap-4 text-[1.02rem] sm:text-[1.15rem]">
+                <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
                 <span><span className="font-extrabold">Format:</span> Live guided sessions + code reviews + 1:1 mentor feedback</span>
               </div>
-              <div className="flex items-center gap-4 text-[1.18rem] sm:text-[1.35rem]">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
+              <div className="flex items-start gap-4 text-[1.02rem] sm:text-[1.15rem]">
+                <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#DBF6EF] text-lg text-brand">✓</span>
                 <span><span className="font-extrabold">Outcome:</span> Portfolio-ready projects, certificate & placement assistance</span>
               </div>
             </div>

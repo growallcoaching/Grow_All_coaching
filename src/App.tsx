@@ -9,17 +9,15 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsApp from './components/WhatsApp';
 import Revealer from './components/Revealer';
-import IntegrationSetup from './components/IntegrationSetup';
 import EnrollmentForm from './components/EnrollmentForm';
 
 export default function App() {
-  const [view, setView] = useState<'home' | 'setup' | 'enroll'>('home');
+  const [view, setView] = useState<'home' | 'enroll'>('home');
 
   useEffect(() => {
     const syncView = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'setup') setView('setup');
-      else if (hash === 'enroll') setView('enroll');
+      if (hash === 'enroll') setView('enroll');
       else setView('home');
     };
 
@@ -27,18 +25,6 @@ export default function App() {
     window.addEventListener('hashchange', syncView);
     return () => window.removeEventListener('hashchange', syncView);
   }, []);
-
-  if (view === 'setup') {
-    return (
-      <div className="min-h-screen bg-[#F7F9F9] text-ink font-body selection:bg-brand/20">
-        <Header />
-        <main className="pt-[84px]">
-          <IntegrationSetup />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
 
   if (view === 'enroll') {
     return (

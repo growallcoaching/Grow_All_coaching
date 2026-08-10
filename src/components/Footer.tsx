@@ -36,12 +36,6 @@ export default function Footer() {
               >
                 Get Started <ArrowUp size={16} className="rotate-45" />
               </a>
-              <a
-                href="#setup"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-all duration-300"
-              >
-                API Keys
-              </a>
             </div>
           </div>
 

@@ -242,7 +242,7 @@ export default function EnrollmentForm() {
         order_id,
         name: 'Grow All Coaching',
         description: selectedProgram.title,
-        image: '/gac-logo.png',
+        image: 'http://localhost:5173/gac-logo.png',
         handler: async (response: {
           razorpay_payment_id: string;
           razorpay_order_id: string;

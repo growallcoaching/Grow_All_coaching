@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { getIntegrationConfig, toPaiseFromPrice } from '../lib/integrations';
+import { getIntegrationConfig } from '../lib/integrations';
 
 type EnrollmentFormState = {
   name: string;
@@ -9,11 +9,15 @@ type EnrollmentFormState = {
   program: string;
 };
 
-const programPriceMap: Record<string, number> = {
-  'Web Development Internship': 99900,
-  'AI / ML Internship': 199900,
-  'Automation & BI Internship': 299900,
-};
+const internshipPrograms = [
+  { id: 'web-development', label: 'Web Development Internship' },
+  { id: 'ai-ml', label: 'AI / ML Internship' },
+  { id: 'automation-bi', label: 'Automation & BI Internship' },
+] as const;
+
+const programIdMap = Object.fromEntries(
+  internshipPrograms.map((program) => [program.label, program.id]),
+) as Record<string, string>;
 
 function loadRazorpayScript() {
   return new Promise((resolve, reject) => {
@@ -74,27 +78,70 @@ export default function EnrollmentForm() {
         return;
       }
 
-      const amount = programPriceMap[form.program] ?? 99900;
       const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
+      const programId = programIdMap[form.program] ?? 'web-development';
+
+      setStatus('Creating secure payment order...');
+
+      const { data: orderData, error: orderError } = await supabase.functions.invoke('clever-responder', {
+        body: {
+          program_id: programId,
+        },
+      });
+
+      if (orderError) {
+        throw new Error(orderError.message || 'Unable to create payment order.');
+      }
+
+      const { key, amount, currency, order_id } = orderData ?? {};
+
+      if (!key || !amount || !currency || !order_id) {
+        throw new Error('Payment order was not generated correctly.');
+      }
 
       await loadRazorpayScript();
 
       const checkout = new window.Razorpay({
-        key: config.razorpayKeyId,
+        key,
         amount,
-        currency: 'INR',
+        currency,
+        order_id,
         name: 'Grow All Coaching',
         description: form.program,
         image: '/gac-logo.png',
-        handler: async function (response: { razorpay_payment_id: string }) {
+        handler: async function (response: {
+          razorpay_payment_id: string;
+          razorpay_order_id: string;
+          razorpay_signature: string;
+        }) {
+          const { data: verifyData, error: verifyError } = await supabase.functions.invoke('smooth-action', {
+            body: {
+              order_id: response.razorpay_order_id,
+              payment_id: response.razorpay_payment_id,
+              signature: response.razorpay_signature,
+            },
+          });
+
+          if (verifyError) {
+            throw new Error(verifyError.message || 'Payment verification failed.');
+          }
+
+          if (!verifyData?.verified) {
+            throw new Error('Payment could not be verified on the server.');
+          }
+
           const { error } = await supabase.from('internship_enrollments').insert({
             name: form.name,
             email: form.email,
             phone: form.phone,
             program: form.program,
+            program_id: programId,
             amount,
+            currency,
             status: 'paid',
             payment_id: response.razorpay_payment_id,
+            order_id: response.razorpay_order_id,
+            signature: response.razorpay_signature,
             created_at: new Date().toISOString(),
           });
 
@@ -115,7 +162,9 @@ export default function EnrollmentForm() {
         },
       });
 
-      checkout.open();
+      requestAnimationFrame(() => {
+        checkout.open();
+      });
     } catch (error) {
       setStatus(error instanceof Error ? error.message : 'Something went wrong while opening payment.');
     } finally {
@@ -169,9 +218,11 @@ export default function EnrollmentForm() {
                 onChange={(e) => handleChange('program', e.target.value)}
                 className="w-full rounded-2xl border border-black/10 bg-[#F8FEFE] px-4 py-3 text-sm outline-none focus:border-brand"
               >
-                <option>Web Development Internship</option>
-                <option>AI / ML Internship</option>
-                <option>Automation & BI Internship</option>
+                {internshipPrograms.map((program) => (
+                  <option key={program.id} value={program.label}>
+                    {program.label}
+                  </option>
+                ))}
               </select>
             </label>
           </div>

@@ -3,23 +3,23 @@ import { Star, Quote, Sparkles } from 'lucide-react';
 const testimonials = [
   {
     quote: "The web dev course changed my career. Within two months of completing it, I landed a junior developer role with a 40% salary increase. The projects were real — not toy examples.",
-    name: 'Aisha Rahman',
+    name: 'Piyush Pawar',
     role: 'Junior Web Developer, TechNova',
-    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face',
+    img: 'https://res.cloudinary.com/drptz4uh/image/upload/v1786547968/Piyush_Pawar_p30env.jpg',
     rating: 5,
   },
   {
     quote: "I came in with basic Excel skills and left knowing Power BI and automation workflows. My manager specifically asked how I learned so fast — it was this program.",
-    name: 'Marcus Chen',
+    name: 'Ananya Singh',
     role: 'BI Analyst, FinEdge',
-    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=face',
+    img: 'https://res.cloudinary.com/drptz4uh/image/upload/v1786547968/Ananya_Singh_cti4r9.jpg',
     rating: 5,
   },
   {
     quote: "The AI internship was hands-on from day one. I contributed to a real model pipeline and got a full-time offer after the program ended. Best investment I made.",
-    name: 'Sophia Bello',
+    name: 'Rohit Mehra',
     role: 'ML Engineer, Neural Labs',
-    img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=face',
+    img: 'https://res.cloudinary.com/drptz4uh/image/upload/v1786548053/Rohit_Mehra_aartng.jpg',
     rating: 5,
   },
 ];

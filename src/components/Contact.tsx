@@ -27,9 +27,9 @@ export default function Contact() {
 
             <div className="space-y-5">
               {[
-                { icon: Mail, text: 'hello@growallcoaching.online', link: 'mailto:hello@growallcoaching.online' },
-                { icon: Phone, text: '+91 98765 43210', link: 'tel:+919876543210' },
-                { icon: MapPin, text: 'Bangalore & Online — India', link: '#' },
+                { icon: Mail, text: 'growallcoaching@gmail.com', link: 'mailto:growallcoaching@gmail.com' },
+                { icon: Phone, text: '+91 89892 91145', link: 'tel:+918989291145' },
+                { icon: MapPin, text: 'Bhopal & Online — India', link: '#' },
               ].map((item) => (
                 <a key={item.text} href={item.link} className="flex items-center gap-4 group">
                   <span className="h-12 w-12 rounded-2xl bg-brand/8 text-brand flex items-center justify-center shadow-md shadow-brand/10 group-hover:bg-gradient-to-br group-hover:from-brand group-hover:to-brand-dark group-hover:text-white group-hover:shadow-brand/20 border border-brand/10 transition-all duration-300">

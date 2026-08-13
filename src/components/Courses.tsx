@@ -4,7 +4,7 @@ const courses = [
   {
     title: 'Full-Stack Web Development',
     desc: 'React, Node.js, and modern APIs. Build real products from week one.',
-    price: '$299',
+    price: 'INR 799',
     tag: 'Bestseller',
     tagColor: 'bg-brand text-white shadow-brand/20',
     accent: '#0E9A9A',
@@ -15,7 +15,7 @@ const courses = [
   {
     title: 'AI & Machine Learning',
     desc: 'Python, LLMs, and data pipelines. Learn to build intelligent apps.',
-    price: 'Free',
+    price: 'INR 899',
     tag: 'New 2026 ✨',
     tagColor: 'bg-lime text-ink shadow-lime/20',
     accent: '#FFD24D',
@@ -26,7 +26,7 @@ const courses = [
   {
     title: 'Excel Automation & BI',
     desc: 'Power Query, dashboards, and workflow automation for business growth.',
-    price: '$149',
+    price: 'INR 349',
     tag: 'Popular',
     tagColor: 'bg-coral text-white',
     accent: '#2EC4B6',

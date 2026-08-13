@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Monitor, Sparkles, Briefcase, ArrowRight, X } from 'lucide-react';
+import { BrainCircuit, BarChart3, ArrowRight, X, Code2 } from 'lucide-react';
 
 const tracks = [
   {
@@ -8,7 +8,7 @@ const tracks = [
     duration: '3 months',
     price: '₹999',
     badge: 'Frontend + Backend',
-    icon: Monitor,
+    icon: Code2,
     color: '#0E9A9A',
   },
   {
@@ -17,7 +17,7 @@ const tracks = [
     duration: '3 months',
     price: '₹1999',
     badge: 'ML + Python',
-    icon: Sparkles,
+    icon: BrainCircuit,
     color: '#FFD24D',
   },
   {
@@ -26,7 +26,7 @@ const tracks = [
     duration: '2 months',
     price: '₹2999',
     badge: 'Automation + Analytics',
-    icon: Briefcase,
+    icon: BarChart3,
     color: '#2EC4B6',
   },
 ];

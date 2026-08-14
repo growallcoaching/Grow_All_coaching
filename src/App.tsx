@@ -53,13 +53,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/Authentication/Login.html" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/enroll" element={<EnrollmentForm />} />
         </Routes>
       </main>
       <Footer />
-      {location.pathname !== '/login' && location.pathname !== '/signup' && <WhatsApp />}
+      {location.pathname !== '/Authentication/Login.html' && location.pathname !== '/signup' && <WhatsApp />}
     </div>
   );
 }

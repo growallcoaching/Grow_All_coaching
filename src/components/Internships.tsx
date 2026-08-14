@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BrainCircuit, BarChart3, ArrowRight, X, Code2 } from 'lucide-react';
 
 const tracks = [
@@ -52,6 +53,7 @@ const buildTiles = [
 ];
 
 export default function Internships() {
+  const navigate = useNavigate();
   const [selectedProgram, setSelectedProgram] = useState<(typeof tracks)[number] | null>(null);
 
   useEffect(() => {
@@ -262,9 +264,11 @@ export default function Internships() {
                 <button
                   type="button"
                   onClick={() => {
-                    window.localStorage.setItem('gac_selected_program', JSON.stringify(selectedProgram));
-                    window.location.hash = '/enroll';
+                    if (selectedProgram) {
+                      window.localStorage.setItem('gac_selected_program', JSON.stringify(selectedProgram));
+                    }
                     setSelectedProgram(null);
+                    navigate('/enroll');
                   }}
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-brand to-brand-dark px-7 py-3.5 text-[1.1rem] font-bold text-white shadow-lg shadow-brand/20 transition hover:-translate-y-0.5"
                 >

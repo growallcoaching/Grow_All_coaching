@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Courses from './components/Courses';
@@ -10,47 +11,55 @@ import Footer from './components/Footer';
 import WhatsApp from './components/WhatsApp';
 import Revealer from './components/Revealer';
 import EnrollmentForm from './components/EnrollmentForm';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Revealer><Courses /></Revealer>
+      <Revealer><About /></Revealer>
+      <Revealer><Internships /></Revealer>
+      <Revealer><Testimonials /></Revealer>
+      <Revealer><Contact /></Revealer>
+    </>
+  );
+}
 
 export default function App() {
-  const [view, setView] = useState<'home' | 'enroll'>('home');
+  const location = useLocation();
 
   useEffect(() => {
-    const syncView = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash === 'enroll') setView('enroll');
-      else setView('home');
-    };
+    if (!location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
 
-    syncView();
-    window.addEventListener('hashchange', syncView);
-    return () => window.removeEventListener('hashchange', syncView);
-  }, []);
+    const elementId = location.hash.replace('#', '');
+    const element = document.getElementById(elementId);
 
-  if (view === 'enroll') {
-    return (
-      <div className="min-h-screen bg-[#F7F9F9] text-ink font-body selection:bg-brand/20">
-        <Header />
-        <main className="pt-[84px]">
-          <EnrollmentForm />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+    }
+  }, [location]);
 
   return (
     <div className="min-h-screen bg-warm text-ink font-body selection:bg-brand/20">
       <Header />
-      <main>
-        <Hero />
-        <Revealer><Courses /></Revealer>
-        <Revealer><About /></Revealer>
-        <Revealer><Internships /></Revealer>
-        <Revealer><Testimonials /></Revealer>
-        <Revealer><Contact /></Revealer>
+      <main className="pt-[84px]">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/enroll" element={<EnrollmentForm />} />
+        </Routes>
       </main>
       <Footer />
-      <WhatsApp />
+      {location.pathname !== '/login' && location.pathname !== '/signup' && <WhatsApp />}
     </div>
   );
 }

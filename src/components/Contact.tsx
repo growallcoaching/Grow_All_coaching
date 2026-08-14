@@ -154,9 +154,19 @@ export default function Contact() {
           >
             <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand via-lime to-coral" />
 
-            <div className="mb-5 flex items-center justify-between gap-3 rounded-xl border border-brand/10 bg-brand/5 px-4 py-3 text-sm text-ink-secondary">
-              <span>{userId ? `Logged in as ${userEmail ?? 'user'}` : 'Guest message: no user_id will be saved'}</span>
-            </div>
+            {!userId && (
+              <div className="mb-5 rounded-xl border border-brand/10 bg-brand/5 px-4 py-3 text-sm text-ink-secondary">
+                <span>
+                  For a better conversation, please <span className="font-semibold text-brand">login first</span>.
+                </span>
+              </div>
+            )}
+
+            {userId && (
+              <div className="mb-5 rounded-xl border border-brand/10 bg-brand/5 px-4 py-3 text-sm text-ink-secondary">
+                <span>Logged in as <span className="font-semibold text-brand">{userEmail ?? 'user'}</span></span>
+              </div>
+            )}
 
             <div className="grid sm:grid-cols-2 gap-5 mb-5">
               <div>

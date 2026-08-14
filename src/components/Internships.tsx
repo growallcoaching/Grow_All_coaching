@@ -263,7 +263,7 @@ export default function Internships() {
                   type="button"
                   onClick={() => {
                     window.localStorage.setItem('gac_selected_program', JSON.stringify(selectedProgram));
-                    window.location.hash = '#enroll';
+                    window.location.hash = '/enroll';
                     setSelectedProgram(null);
                   }}
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-brand to-brand-dark px-7 py-3.5 text-[1.1rem] font-bold text-white shadow-lg shadow-brand/20 transition hover:-translate-y-0.5"

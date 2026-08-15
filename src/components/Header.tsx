@@ -110,7 +110,7 @@ export default function Header() {
             ) : (
               <>
                 <Link
-                  to="/Authentication/Login.html"
+                  to="/Authentication/Login"
                   className="relative inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#E8F9EE] text-[#128C7E] text-sm font-bold px-5 py-2.5 shadow-sm hover:bg-[#DFF7E7] transition-all duration-300"
                 >
                   Login
@@ -176,7 +176,7 @@ export default function Header() {
             ) : (
               <>
                 <Link
-                  to="/Authentication/Login.html"
+                  to="/Authentication/Login"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-full border border-[#25D366]/30 bg-[#E8F9EE] text-[#128C7E] text-center font-bold py-4 shadow-sm"
                 >

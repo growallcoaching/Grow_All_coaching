@@ -6,7 +6,19 @@
   </url>
 
   <url>
-    <loc>https://growallcoaching.online/Authentication/Login</loc>
+    <loc>https://growallcoaching.online/Login</loc>
+  </url>
+
+  <url>
+    <loc>https://growallcoaching.online/about</loc>
+  </url>
+
+  <url>
+    <loc>https://growallcoaching.online/courses</loc>
+  </url>
+
+  <url>
+    <loc>https://growallcoaching.online/contact</loc>
   </url>
 
   <url>
